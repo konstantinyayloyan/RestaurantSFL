@@ -40,11 +40,4 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-    @Override
-    public Product create(String name, Double price){
-        Product product = new Product();
-        product.setName(name);
-        product.setPrice(price);
-        return productRepository.save(product);
-    }
 }

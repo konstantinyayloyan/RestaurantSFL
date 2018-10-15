@@ -18,6 +18,5 @@ public interface ProductService {
 
     List<Product> findAll();
 
-    Product create(String name, Double price);
 }
 

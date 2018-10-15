@@ -22,6 +22,6 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
 
     @Override
     public List<RestaurantTable> findByUserId(Long id) {
-        return null;
+        return restaurantTableRepository.findByEmployeeId(id);
     }
 }
