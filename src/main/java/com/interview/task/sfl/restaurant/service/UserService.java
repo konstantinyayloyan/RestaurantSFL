@@ -18,4 +18,8 @@ public interface UserService {
     User create(User user);
 
     User edit(User user);
+
+    String signIn(String username, String password);
+
+    String signUp(User user);
 }
