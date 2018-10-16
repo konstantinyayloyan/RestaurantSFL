@@ -10,6 +10,5 @@ public interface RestaurantTableService {
 
     RestaurantTable create(RestaurantTable user);
 
-
     List<RestaurantTable> findByUserId(Long id);
 }

@@ -25,6 +25,17 @@ public class ProductInOrder {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @Column
+    Integer amount;
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     public Long getId() {
         return id;
     }

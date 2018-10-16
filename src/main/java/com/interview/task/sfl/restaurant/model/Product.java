@@ -16,9 +16,6 @@ public class Product {
     @Column
     private Double price;
 
-    @Column
-    private Integer count;
-
     public Long getId() {
         return id;
     }
@@ -41,13 +38,5 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
     }
 }

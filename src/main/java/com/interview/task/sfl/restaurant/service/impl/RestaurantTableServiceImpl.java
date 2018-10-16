@@ -24,4 +24,7 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
     public List<RestaurantTable> findByUserId(Long id) {
         return restaurantTableRepository.findByEmployeeId(id);
     }
+
+
+
 }

@@ -4,12 +4,11 @@ import com.interview.task.sfl.restaurant.model.Order;
 import com.interview.task.sfl.restaurant.model.RestaurantTable;
 import com.interview.task.sfl.restaurant.model.enums.OrderStatus;
 import com.interview.task.sfl.restaurant.repository.OrderRepository;
+import com.interview.task.sfl.restaurant.repository.RestaurantTableRepository;
 import com.interview.task.sfl.restaurant.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -17,33 +16,26 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private RestaurantTableRepository restaurantTableRepository;
+
     @Override
-    public Order create(Order order) {
+    public Order create(Order order, Long tableId) throws Exception {
+
+        RestaurantTable restaurantTable = restaurantTableRepository.getOne(tableId);
+        if(orderRepository.getOrderByStatusAndRestaurantTable(OrderStatus.OPEN, restaurantTable) != null) {
+            throw new Exception("Table is busy");
+        }
+
+        order.setRestaurantTable(restaurantTable);
+        order.setStatus(OrderStatus.OPEN);
+
         return orderRepository.save(order);
     }
 
     @Override
-    public Order getOrder(@NotNull Long id) {
-        return orderRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<Order> getOrders() {
-        return orderRepository.findAll();
-    }
-
-    @Override
-    public Order findOrderByRestaurantTableAndStatus(RestaurantTable restaurantTable, OrderStatus orderStatus) {
-        return null;
-    }
-
-    @Override
-    public void deleteById(@NotNull Long id) {
-        orderRepository.deleteById(id);
-    }
-
-    @Override
-    public Order edit(@NotNull Order order) {
+    public Order edit(Order order) {
         return orderRepository.save(order);
     }
+
 }
