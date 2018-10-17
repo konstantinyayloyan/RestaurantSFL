@@ -1,4 +1,4 @@
-package com.interview.task.sfl.restaurant.model;
+package com.interview.task.sfl.restaurant.model.common;
 
 public class LoginRequest {
 

@@ -1,12 +1,10 @@
 package com.interview.task.sfl.restaurant.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.interview.task.sfl.restaurant.model.RestaurantTable;
 import com.interview.task.sfl.restaurant.model.enums.UserType;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,25 +15,28 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "username",unique = true, nullable = false)
     private String username;
 
+    @Column(name = "password_hash")
     private String password;
 
-    @Column
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column
+    @Column(name = "last_name")
     private String lastName;
 
-    String uUID;
+    @Column(name = "uuid")
+    private String uUID;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonBackReference
-    Set<RestaurantTable> restourantTables = new HashSet<>();
+    private Set<RestaurantTable> restaurantTables = new HashSet<>();
 
+    @Column(name = "userType")
     @Enumerated(EnumType.STRING)
-    UserType userType;
+    private UserType userType;
 
     public Long getId() {
         return id;
@@ -86,11 +87,11 @@ public class User {
     }
 
     public Set<RestaurantTable> getRestourantTables() {
-        return restourantTables;
+        return restaurantTables;
     }
 
     public void setRestourantTables(Set<RestaurantTable> restourantTables) {
-        this.restourantTables = restourantTables;
+        this.restaurantTables = restourantTables;
     }
 
     public String getuUID() {

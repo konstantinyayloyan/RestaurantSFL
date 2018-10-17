@@ -25,8 +25,11 @@ public class ProductInOrder {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column
-    Integer amount;
+    @Column(name = "amount")
+    private Integer amount;
+
+
+
 
     public Integer getAmount() {
         return amount;

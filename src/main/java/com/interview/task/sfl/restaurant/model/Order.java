@@ -15,19 +15,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "table_id")
     @JsonManagedReference
-    RestaurantTable restaurantTable;
+    private RestaurantTable restaurantTable;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    OrderStatus status;
+    private OrderStatus status;
 
     @OneToMany(mappedBy = "order")
-    Set<ProductInOrder> productInOrders = new HashSet<>();
+    private Set<ProductInOrder> productInOrders = new HashSet<>();
 
     public Long getId() {
         return id;

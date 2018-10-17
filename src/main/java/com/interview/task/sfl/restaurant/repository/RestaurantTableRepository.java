@@ -11,5 +11,5 @@ import java.util.List;
 public interface RestaurantTableRepository extends JpaRepository<RestaurantTable, Long> {
 
     @Query("SELECT r FROM RestaurantTable r WHERE r.user.id=?1")
-    List<RestaurantTable> findByEmployeeId(Long id);
+    List<RestaurantTable> findByUserId(Long id);
 }

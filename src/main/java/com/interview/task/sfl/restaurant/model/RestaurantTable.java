@@ -13,8 +13,8 @@ public class RestaurantTable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column
-    String name;
+    @Column(name = "name")
+    private String name;
 
     public Long getId() {
         return id;

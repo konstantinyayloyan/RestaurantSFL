@@ -5,6 +5,7 @@ import com.interview.task.sfl.restaurant.repository.ProductRepository;
 import com.interview.task.sfl.restaurant.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -16,7 +17,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public Product create(Product product) {
+    @Transactional
+    public Product create(@NotNull Product product) {
         return productRepository.save(product);
     }
 
@@ -31,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public Product edit(@NotNull Product product) {
         return productRepository.save(product);
     }

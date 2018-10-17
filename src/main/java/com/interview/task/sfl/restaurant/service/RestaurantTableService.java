@@ -11,4 +11,6 @@ public interface RestaurantTableService {
     RestaurantTable create(RestaurantTable user);
 
     List<RestaurantTable> findByUserId(Long id);
+
+    void assignTableToUser(Long tableId, Long userId) throws Exception;
 }
