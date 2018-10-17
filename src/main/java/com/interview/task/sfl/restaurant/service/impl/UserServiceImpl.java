@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public String signIn(String username, String password) {
         String uUID = UUID.randomUUID().toString().replaceAll("-","");
         User user = userRepository.findByUsername(username);

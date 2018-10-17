@@ -6,9 +6,7 @@ import com.interview.task.sfl.restaurant.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -20,27 +18,6 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public Product create(@NotNull Product product) {
         return productRepository.save(product);
-    }
-
-    @Override
-    public Product findById(@NotNull Long id) {
-        return productRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void deleteById(@NotNull Long id) {
-        productRepository.deleteById(id);
-    }
-
-    @Override
-    @Transactional
-    public Product edit(@NotNull Product product) {
-        return productRepository.save(product);
-    }
-
-    @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
     }
 
 }

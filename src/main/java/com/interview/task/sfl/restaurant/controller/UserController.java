@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-//    @PreAuthorize("hasAuthority('ROLE_MANAGER')")
+    @PreAuthorize("hasAuthority('ROLE_MANAGER')")
     public ResponseEntity<SuccessResponse> signUp(@RequestBody User user) {
         return new ResponseEntity<>(new SuccessResponse(userService.signUp(user)), HttpStatus.CREATED);
     }
